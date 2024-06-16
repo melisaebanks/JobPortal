@@ -1,0 +1,28 @@
+<div class="filter">
+  <label for="category">Filter by Category:</label>
+  <select id="category" [(ngModel)]= "selectedCategory" (change)="filterJobs()">
+    <option value="">All</option>
+    <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+  </select>
+</div>
+<div class="btnEdit">
+  <button (click)="navigateToLogin()">Login Edit list</button>
+</div>
+<br><br>
+<table class="table table-hover table-striped">
+  <thead>
+  <tr>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let job of jobs">
+    <td> {{ job.categoryType }}</td>
+    <td><strong>{{ job.title }}</strong></td>
+    <td>{{ job.description }}</td>
+  </tr>
+</tbody>
+</table>
+<br>

@@ -1,0 +1,64 @@
+<div>
+
+  <button (click)="logout()">Logout</button>
+  <h2>Admin Page</h2>
+  <form [formGroup]="jobForm" (ngSubmit)="saveJob()">
+    <table width="100%">
+      <tr>
+        <th width="100px">
+          <label for="title">Title:</label>
+        </th>
+        <td>
+          <input type="text" id="title" formControlName="title" name="title">
+          <div *ngIf="jobForm.get('title')?.invalid && jobForm.get('title')?.touched">
+            <small *ngIf="jobForm.get('title')?.errors?.['required']">Job title is required.</small>
+            <small *ngIf="jobForm.get('title')?.errors?.['minlength']">Job title must be at least 4 characters long.</small>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          <label for="categoryId">Category:</label>
+        </th>
+        <td>
+          <select id="categoryId" formControlName="categoryId" name="categoryId">
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          </select>
+          <div *ngIf="jobForm.get('categoryId')?.invalid && jobForm.get('categoryId')?.touched">
+            <small *ngIf="jobForm.get('categoryId')?.errors?.['required']">Job category is required.</small>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th valign="top">
+          <label for="description">Description:</label>
+        </th>
+        <td>
+          <textarea id="description" formControlName="description" name="description"></textarea>
+          <div *ngIf="jobForm.get('description')?.invalid && jobForm.get('description')?.touched">
+            <small *ngIf="jobForm.get('description')?.errors?.['required']">Job description is required.</small>
+            <small *ngIf="jobForm.get('description')?.errors?.['minlength']">Job description must be at least 10 characters long.</small>
+          </div>
+        </td>
+      </tr>
+    </table>
+<br><br>
+    <div>
+      <button class="btn btn-success" type="submit">{{ isEditMode ? 'Update' : 'Add' }} Job</button>
+    </div>
+    <small *ngIf="errorMessage">{{ errorMessage }}</small>
+  </form>
+
+  <h2>Jobs</h2>
+  <div *ngFor="let job of jobs">
+    <h3>{{ job.title }}</h3>
+    <p><strong>Category:</strong> {{ job.categoryType }}</p>
+    <p>{{ job.description }}</p>
+    <button class="btn btn-primary btn-sm" (click)="editJob(job)">Edit</button>&nbsp;
+    <button class="btn btn-danger btn-sm" (click)="deleteJob(job.id)">Delete</button>
+    <br>
+    <hr>
+    <br>
+  </div>
+</div>

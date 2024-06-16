@@ -1,0 +1,41 @@
+<div>
+
+  <button id="btnBack" type="button" (click)="cancel()">< BACK</button>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+  <h2>Login</h2>
+    <table  width="100%">
+      <tr>
+        <td width="100px"><label for="username">Username:</label></td>
+        <td>
+          <input type="text" id="username" formControlName="username">
+          <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            <small *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</small>
+            <small *ngIf="loginForm.get('username')?.errors?.['minlength']">Username must be at least 4 characters long.</small>
+          </div>
+        </td>
+        </tr>
+        <tr>
+        <td>
+          <label for="password">Password:</label>
+        </td>
+        <td>
+          <input type="password" id="password" formControlName="password">
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+            <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 4 characters long.</small>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div>
+            <br>
+            <button class="btn btn-success btn-block" type="submit">Login</button>
+          </div>
+          <small *ngIf="errorMessage">{{ errorMessage }}</small>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

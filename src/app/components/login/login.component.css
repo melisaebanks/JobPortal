@@ -1,0 +1,40 @@
+
+.btnLogin{
+  background-color: green;
+  font-weight: bolder;
+  text-transform: uppercase;
+  color: white;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+form{
+  width: 50%;
+  padding-left: 25%;
+}
+
+h2{
+  text-align:center;
+  text-transform:uppercase;
+}
+
+input{
+  width: 99%;
+  height: 20px;
+}
+
+
+#btnBack{
+  border: none;
+  background: none;
+  font-size: medium;
+  font-weight: bold;
+}
+#btnBack:hover{
+  border: none;
+background: none;
+cursor: pointer;
+
+}
+
