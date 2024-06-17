@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class JobService {
 
-  private apiUrl = 'https://localhost:7010/api';
+  private apiUrl = 'http://melisaebanks-001-site1.htempurl.com/api';
 
   constructor(private http: HttpClient) { }
 

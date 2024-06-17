@@ -43,18 +43,18 @@ export class AdminComponent implements OnInit {
   saveJob(): void {
     if(this.jobForm.valid){
       const job = this.jobForm.value;
-    if (this.isEditMode) {
-      this.jobService.updateJob(job).subscribe(() => this.loadJobs());
-    } else {
-      this.jobService.addJob(job).subscribe(() => this.loadJobs());
+      if (this.isEditMode) {
+        this.jobService.updateJob(job).subscribe(() => this.loadJobs());
+      } else {
+        this.jobService.addJob(job).subscribe(() => this.loadJobs());
+      }
+      this.resetForm();
     }
-    this.resetForm();
+    else
+    {
+      this.errorMessage = "Please fill out form correctly";
+    }
   }
-  else
-  {
-    this.errorMessage = "Please fill out form correctly";
-  }
-}
 
   editJob(job: Job): void {
     this.jobForm.patchValue(job);

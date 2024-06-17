@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  private apiUrl = 'https://localhost:7010/api';
+  private apiUrl = 'http://melisaebanks-001-site1.htempurl.com/api';
 
   private isAuthenticated = false;
 
